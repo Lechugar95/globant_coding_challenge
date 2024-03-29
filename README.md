@@ -17,7 +17,7 @@ Setup:
 
 1. Install required libraries:
 
-    pip install fastapi azure-storage-blob pydantic uvicorn
+    pip install fastapi azure-storage-blob pydantic uvicorn pyodbc
 
 2. Replace placeholders in main.py:
 
