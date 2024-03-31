@@ -100,4 +100,4 @@ Testing the API:
 
 2. Explore the available endpoint (/csv/{filename}) and its usage.
 
-3. Test retrieving specific CSV data by replacing {filename} with the actual file name in the URL (e.g., http://localhost:8000/csv/data.csv).
+3. Test retrieving specific CSV data by replacing {filename} with the actual file name in the URL (e.g., http://localhost:8000/csv/jobs.csv).
