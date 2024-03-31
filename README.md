@@ -79,6 +79,7 @@ git
 
 5. Replace placeholders in main.py:
 
+* YOUR_AZURE_SQL_DATABASE_CONNECTION_STRING
 * YOUR_AZURE_STORAGE_CONNECTION_STRING: Your Azure Storage connection string.
 * YOUR_CONTAINER_NAME: The name of the container containing your CSV files.
 
