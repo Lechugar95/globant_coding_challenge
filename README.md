@@ -18,6 +18,7 @@ Setup:
 1. Storage the input .csv input files in your Azure Blob Storage.
 
 * Go to your storage account in Azure Portal.
+
 ![Storage account](images/csv_upload/1_storage_account.jpg)
 
 * Then go to Storage browser menu.
