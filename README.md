@@ -17,7 +17,7 @@ Setup:
 
 1. Storage the input .csv input files in your Azure Blob Storage.
 
-* Go to your storage account in Azure Portal.
+* Search Storage accounts on Azure Portal and enter your storage account.
 
 ![Storage account](images/csv_upload/1_storage_account.jpg)
 
@@ -41,11 +41,43 @@ Setup:
 
 ![Uploading files](images/csv_upload/6_upload_files.jpg)
 
-2. Install required libraries:
+2. Create the server in Azure SQL.
+
+* Search Azure SQL on Azure Portal and click on Create option.
+
+![Creating sql server](images/sql_server/1_create_option.jpg)
+
+* Select SQL databases and Database server on Resource type to create the server.
+
+![Deployment](images/sql_server/2_deployment_option.jpg)
+
+* Complete the following fields of resource group, server name, location. Choose the authentication method, for example, the SQL authentication and set an adming login username and a password.
+
+![Basics](images/sql_server/3_basics_option.jpg)
+
+* Then continue with the next configuration (Networking, Security, etc.) or click on Review + create option to finish.
+
+3. Create the database
+
+* On Azure SQL, click on create again.
+
+![Creating sql database](images/sql_database/1_create_option.jpg)
+
+* Select SQL databases and Single database as Resource type and click on Create.
+
+![Deployment](images/sql_database/2_deployment_option.jpg)
+
+* Complete the basic fields.
+
+![Basics](images/sql_database/3_basics.jpg)
+
+* Then continue with the next configurations or click on Review + create to finish.
+
+4. Install required libraries in your virtual environment:
 
     pip install fastapi azure-storage-blob pydantic uvicorn pyodbc
 
-3. Replace placeholders in main.py:
+5. Replace placeholders in main.py:
 
 * YOUR_AZURE_STORAGE_CONNECTION_STRING: Your Azure Storage connection string.
 * YOUR_CONTAINER_NAME: The name of the container containing your CSV files.
