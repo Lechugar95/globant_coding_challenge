@@ -62,7 +62,7 @@ Setup:
 * On Azure SQL, click on create again.
 
 ![Creating sql database](images/sql_database/1_create_option.jpg)
-
+git
 * Select SQL databases and Single database as Resource type and click on Create.
 
 ![Deployment](images/sql_database/2_deployment_option.jpg)
