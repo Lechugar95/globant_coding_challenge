@@ -41,11 +41,11 @@ Setup:
 
 ![Uploading files](images/csv_upload/6_upload_files.jpg)
 
-1. Install required libraries:
+2. Install required libraries:
 
     pip install fastapi azure-storage-blob pydantic uvicorn pyodbc
 
-2. Replace placeholders in main.py:
+3. Replace placeholders in main.py:
 
 * YOUR_AZURE_STORAGE_CONNECTION_STRING: Your Azure Storage connection string.
 * YOUR_CONTAINER_NAME: The name of the container containing your CSV files.
