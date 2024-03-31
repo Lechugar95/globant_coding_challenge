@@ -1,11 +1,14 @@
-from fastapi import FastAPI, Query
-from azure.storage.blob import BlobServiceClient
-from pydantic import BaseModel
-import pyodbc
-  
-db_connection_string = "Driver={ODBC Driver 17 for SQL Server};Server=tcp:servermigration1.database.windows.net,1433;Database=databasemigration1;Uid=admin_migration;Pwd=CLOUDgcp#246;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+# Import necessary libraries
+from fastapi import FastAPI, Query  # for creating a FastAPI web server
+from azure.storage.blob import BlobServiceClient  # for interacting with Azure Blob Storage
+from pydantic import BaseModel  # for data validation
+import pyodbc  # for connecting to Azure SQL Database
 
-# Replace with your connection string
+# Connection strings for Azure resources. Replace them with your connection strings
+# For the azure sql database
+db_connection_string = "YOUR_AZURE_SQL_DATABASE_CONNECTION_STRING"
+
+# for the blob storage
 storage_connection_string = "YOUR_AZURE_STORAGE_CONNECTION_STRING"
 
 # Container name where your CSV files are stored
@@ -14,28 +17,26 @@ container_name = "YOUR_CONTAINER_NAME"
 app = FastAPI()
 
 def determine_table_name(filename):
+    """Determines the table name and headers based on the filename."""
     # Implement logic to map filenames to table names
-    # Example:
     #print(filename)
     if filename.startswith("departments"):
         table_name = "departments"
-        headers = ['id','department']
-        return table_name, headers
+        headers = ['id', 'department']
     elif filename.startswith("hired_employees"):
         table_name = "hired_employees"
-        headers = ['id','name','datetime','department_id','job_id']
-        return table_name, headers
+        headers = ['id', 'name', 'datetime', 'department_id', 'job_id']
     elif filename.startswith("jobs"):
         table_name = "jobs"
-        headers = ['id','job']
-        return table_name, headers
+        headers = ['id', 'job']
     else:
         raise ValueError(f"Invalid filename: {filename}")
+    
+    return table_name, headers
 
 def insert_data(data, table_name, headers):
   """Inserts data into the specified table in Azure SQL Database."""
-  # Replace with your table name and column placeholders
-  #table_name = "dbo.departments"
+  # Construct the INSERT query with placeholders for values
   column_placeholders = ", ".join(["?"] * len(headers))
   insert_query = f"INSERT INTO {table_name} ({','.join(headers)}) VALUES ({column_placeholders})"
   #print(insert_query)
@@ -45,28 +46,32 @@ def insert_data(data, table_name, headers):
       with conn.cursor() as cursor:
         for row in data:
           #print(row)
-          cursor.execute(insert_query, row)
-        conn.commit()
+          cursor.execute(insert_query, row)  # Execute the query with each row
+        conn.commit()  # Commit the changes
     return {"message": "Data inserted successfully!"}
   except Exception as e:
-    return {"error": str(e)}
+    return {"error": str(e)}  # Return an error message if any exception occurs
 
+# Pydantic model for CSV data
 class CSVData(BaseModel):
     headers: list[str]
     data: list[list[str]]
 
+# API endpoint to retrieve CSV data and insert into SQL
 @app.get("/csv/{filename}")
 async def get_csv_data(filename: str):
+    """Retrieves CSV data from Azure Blob Storage and inserts it into Azure SQL Database."""
+
     try:
-        # Create BlobServiceClient with the connection string
+        # Create BlobServiceClient and get the container client
         blob_service_client = BlobServiceClient.from_connection_string(storage_connection_string)
         
         # Get a reference to the container
         container_client = blob_service_client.get_container_client(container_name)
         
-        # Download the specific CSV blob
+        # Download the CSV blob
         blob_client = container_client.get_blob_client(filename)
-        download_stream = blob_client.download_blob()  # No need to await here
+        download_stream = blob_client.download_blob()
         
         # Read the CSV data from the download stream
         csv_data = download_stream.content_as_text(encoding="utf-8").splitlines()
@@ -74,6 +79,7 @@ async def get_csv_data(filename: str):
         data = [row.split(",") for row in csv_data[0:]]
         #print(data)
 
+        # Determine table name and headers
         table_name, headers = determine_table_name(filename)
 
         # Insert data into SQL table
@@ -83,6 +89,8 @@ async def get_csv_data(filename: str):
         # Handle errors appropriately (e.g., return HTTP status code 404)
         return {"error": str(e)}
 
+# Run the FastAPI server
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+    
