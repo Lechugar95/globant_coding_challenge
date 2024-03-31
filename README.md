@@ -15,6 +15,14 @@ Requirements:
 
 Setup:
 
+1. Storage the input .csv input files in your Azure Blob Storage.
+
+* Go to your storage account in Azure Portal.
+* Then go to Storage browser menu.
+* Click on Add container option and give it a name.
+* Open your container and click on Add directory option.
+* Go into your directory, click on Upload option to upload the .csv files.
+
 1. Install required libraries:
 
     pip install fastapi azure-storage-blob pydantic uvicorn pyodbc
@@ -30,7 +38,7 @@ Running the API:
 
 2. Run the script from the command line:
 
-    python csv_api.py
+    python main.py
 
 This starts the FastAPI server on port 8000 by default.
 
