@@ -18,10 +18,22 @@ Setup:
 1. Storage the input .csv input files in your Azure Blob Storage.
 
 * Go to your storage account in Azure Portal.
+![Storage account](images/csv_upload/1_storage_account.jpg)
+
 * Then go to Storage browser menu.
-* Click on Add container option and give it a name.
+![Storage browser](images/csv_upload/2_storage_browser.jpg)
+
+* Click on Blob container menu.
+![Blob container](images/csv_upload/3_blob_container.jpg)
+
+* Go to Add container option.
+![Adding container](images/csv_upload/4_add_container.jpg)
+
 * Open your container and click on Add directory option.
+![Adding virtual directory](images/csv_upload/5_add_directory.jpg)
+
 * Go into your directory, click on Upload option to upload the .csv files.
+![Uploading files](images/csv_upload/6_upload_files.jpg)
 
 1. Install required libraries:
 
