@@ -3,15 +3,18 @@ This project provides a local REST API built with FastAPI to access and read CSV
 
 Features:
 
-Retrieves data from CSV files in a specified Azure Blob Storage container.
-Exposes an endpoint to fetch data by filename.
-Returns the CSV data structure as JSON (headers and rows).
+* Retrieves data from CSV files in a specified Azure Blob Storage container.
+* Exposes an endpoint to fetch data by filename.
+* Returns the CSV data structure as JSON (headers and rows).
+* Inserts the data into Azure SQL tables.
+
 Requirements:
 
-* Python 3.6 or later
+* Python 3.11
 * FastAPI
 * Azure Storage SDK for Python (azure-storage-blob)
-* Pydantic
+* Pyodbc
+* Uvicorn
 
 Setup:
 
@@ -75,11 +78,11 @@ git
 
 4. Install required libraries in your virtual environment:
 
-    pip install fastapi azure-storage-blob pydantic uvicorn pyodbc
+    pip install fastapi azure-storage-blob uvicorn pyodbc
 
 5. Replace placeholders in main.py:
 
-* YOUR_AZURE_SQL_DATABASE_CONNECTION_STRING
+* YOUR_AZURE_SQL_DATABASE_CONNECTION_STRING:  Your Azure SQL Database connection string.
 * YOUR_AZURE_STORAGE_CONNECTION_STRING: Your Azure Storage connection string.
 * YOUR_CONTAINER_NAME: The name of the container containing your CSV files.
 
