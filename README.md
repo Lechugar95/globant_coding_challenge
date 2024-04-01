@@ -79,7 +79,7 @@ git
 
 4. Install required libraries in your virtual environment:
 
-    pip install fastapi azure-storage-blob pydantic uvicorn pyodbc
+    pip install fastapi azure-storage-blob uvicorn pyodbc
 
 5. Replace placeholders in main.py:
 
