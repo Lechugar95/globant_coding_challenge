@@ -3,11 +3,11 @@ This project provides a local REST API built with FastAPI to access and read CSV
 
 Features:
 
-Retrieves data from CSV files in a specified Azure Blob Storage container.
-Exposes an endpoint to fetch data by filename.
-Returns the CSV data structure as JSON (headers and rows).
-Inserts the data into Azure SQL tables.
-Compute two metrics by using the inserted data.
+* Retrieves data from CSV files in a specified Azure Blob Storage container.
+* Exposes an endpoint to fetch data by filename.
+* Returns the CSV data structure as JSON (headers and rows).
+* Inserts the data into Azure SQL tables.
+* Compute two metrics by using the inserted data.
 
 Requirements:
 
