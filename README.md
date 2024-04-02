@@ -115,51 +115,51 @@ Testing the API:
 
 * First, the input CSV files uploaded in the storage account.
 
-![CSVs uploaded in storage account](images/endpoints/csv_inserted_data/input_csvs_in_storage.png)
+![CSVs uploaded in storage account](images/endpoints/csv_inserted_data/input_csvs_in_storage.PNG)
 
 * Then we see the results on Fast API after the CSV data is inserted on the corresponding Azure SQL table.
 
-![Jobs data inserted](images/endpoints/csv_inserted_data/jobs_csv_inserted.png)
+![Jobs data inserted](images/endpoints/csv_inserted_data/jobs_csv_inserted.PNG)
 
-![Departments data inserted](images/endpoints/csv_inserted_data/departments_csv_inserted.png)
+![Departments data inserted](images/endpoints/csv_inserted_data/departments_csv_inserted.PNG)
 
-![Hired Employees data inserted](images/endpoints/csv_inserted_data/hired_employees_csv_inserted.png)
+![Hired Employees data inserted](images/endpoints/csv_inserted_data/hired_employees_csv_inserted.PNG)
 
 * And the data on the Azure SQL tables
 
-![Jobs table](images/endpoints/csv_inserted_data/jobs_azure_sql_table.png)
+![Jobs table](images/endpoints/csv_inserted_data/jobs_azure_sql_table.PNG)
 
-![Number of rows in Jobs table](images/endpoints/csv_inserted_data/count_jobs_azure_sql_table.png)
+![Number of rows in Jobs table](images/endpoints/csv_inserted_data/count_jobs_azure_sql_table.PNG)
 
-![Departments table](images/endpoints/csv_inserted_data/departments_azure_sql_table.png)
+![Departments table](images/endpoints/csv_inserted_data/departments_azure_sql_table.PNG)
 
-![Number of rows in Departments table](images/endpoints/csv_inserted_data/count_departments_azure_sql_table.png)
+![Number of rows in Departments table](images/endpoints/csv_inserted_data/count_departments_azure_sql_table.PNG)
 
 
-![Hired Employees table](images/endpoints/csv_inserted_data/hired_employees_azure_sql_table.png)
+![Hired Employees table](images/endpoints/csv_inserted_data/hired_employees_azure_sql_table.PNG)
 
-![Number of rows in Hired Employees table](images/endpoints/csv_inserted_data/count_hired_employees_azure_sql_table.png)
+![Number of rows in Hired Employees table](images/endpoints/csv_inserted_data/count_hired_employees_azure_sql_table.PNG)
 
 * Here we can see the result on Fast API of the first metric computed about the number of employees hired for each job and department for each quarter in 2021.
 
-![1 - First metric results](images/endpoints/first_metric/first_metric_1.png)
+![1 - First metric results](images/endpoints/first_metric/first_metric_1.PNG)
 
-![2 - First metric results](images/endpoints/first_metric/first_metric_2.png)
+![2 - First metric results](images/endpoints/first_metric/first_metric_2.PNG)
 
 * And also for the second metric of the departments that hired more employees than the mean of employees hired in 2021 of all departments.
 
-![1 - Second metric results](images/endpoints/second_metric/second_metric_1.png)
+![1 - Second metric results](images/endpoints/second_metric/second_metric_1.PNG)
 
-![2 - Second metric results](images/endpoints/second_metric/second_metric_2.png)
+![2 - Second metric results](images/endpoints/second_metric/second_metric_2.PNG)
 
 * That data obtained of both metrics were also inserted in Azure SQL tables. In the next pics, appears some data of the first metric.
 
-![Firt metric table](images/endpoints/first_metric/first_metric_azure_sql_table.png)
+![Firt metric table](images/endpoints/first_metric/first_metric_azure_sql_table.PNG)
 
-![Number of rows in first metric table](images/endpoints/first_metric/count_first_metric_azure_sql_table.png)
+![Number of rows in first metric table](images/endpoints/first_metric/count_first_metric_azure_sql_table.PNG)
 
 * And also for the second metric.
 
-![Second metric table](images/endpoints/second_metric/second_metric_azure_sql_table.png)
+![Second metric table](images/endpoints/second_metric/second_metric_azure_sql_table.PNG)
 
-![Number of rows in second metric table](images/endpoints/second_metric/count_second_metric_azure_sql_table.png)
+![Number of rows in second metric table](images/endpoints/second_metric/count_second_metric_azure_sql_table.PNG)
