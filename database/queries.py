@@ -17,7 +17,7 @@ def insert_data(data, table_name, headers):
           #print(row)
           cursor.execute(insert_query, row)  # Execute the query with each row
         conn.commit()  # Commit the changes
-    return {"message": "Data inserted successfully!"}
+    return {"message": "Data inserted successfully into the corresponding Azure SQL table!"}
   except Exception as e:
     return {"error": str(e)}  # Return an error message if any exception occurs
 
@@ -44,6 +44,6 @@ def insert_metric_data(result_api, table_name, dtype_cols):
     metric_df = pd.json_normalize(result_api, 'data')
     engine = sa.create_engine(salchemy_db_con_string)
     metric_df.to_sql(name=table_name, con=engine, index=False, dtype=dtype_cols, if_exists='replace')
-    return {"message": "Metric data inserted successfully!"}
+    return {"message": "Metric data inserted successfully into the corresponding Azure SQL table!"}
   except Exception as e:
     return {"error": str(e)}  # Return an error message if any exception occurs

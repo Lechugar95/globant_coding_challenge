@@ -110,3 +110,56 @@ Testing the API:
 2. Explore the available endpoint (/csv/{filename}) and its usage.
 
 3. Test retrieving specific CSV data by replacing {filename} with the actual file name in the URL (e.g., http://localhost:8000/csv/jobs.csv).
+
+* In the following images, we can see the results of the endpoints. We can find these screenshots on the images folder.
+
+* First, the input CSV files uploaded in the storage account.
+
+![CSVs uploaded in storage account](images/endpoints/csv_inserted_data/input_csvs_in_storage.png)
+
+* Then we see the results on Fast API after the CSV data is inserted on the corresponding Azure SQL table.
+
+![Jobs data inserted](images/endpoints/csv_inserted_data/jobs_csv_inserted.png)
+
+![Departments data inserted](images/endpoints/csv_inserted_data/departments_csv_inserted.png)
+
+![Hired Employees data inserted](images/endpoints/csv_inserted_data/hired_employees_csv_inserted.png)
+
+* And the data on the Azure SQL tables
+
+![Jobs table](images/endpoints/csv_inserted_data/jobs_azure_sql_table.png)
+
+![Number of rows in Jobs table](images/endpoints/csv_inserted_data/count_jobs_azure_sql_table.png)
+
+![Departments table](images/endpoints/csv_inserted_data/departments_azure_sql_table.png)
+
+![Number of rows in Departments table](images/endpoints/csv_inserted_data/count_departments_azure_sql_table.png)
+
+
+![Hired Employees table](images/endpoints/csv_inserted_data/hired_employees_azure_sql_table.png)
+
+![Number of rows in Hired Employees table](images/endpoints/csv_inserted_data/count_hired_employees_azure_sql_table.png)
+
+* Here we can see the result on Fast API of the first metric computed about the number of employees hired for each job and department for each quarter in 2021.
+
+![1 - First metric results](images/endpoints/first_metric/first_metric_1.png)
+
+![2 - First metric results](images/endpoints/first_metric/first_metric_2.png)
+
+* And also for the second metric of the departments that hired more employees than the mean of employees hired in 2021 of all departments.
+
+![1 - Second metric results](images/endpoints/second_metric/second_metric_1.png)
+
+![2 - Second metric results](images/endpoints/second_metric/second_metric_2.png)
+
+* That data obtained of both metrics were also inserted in Azure SQL tables. In the next pics, appears some data of the first metric.
+
+![Firt metric table](images/endpoints/first_metric/first_metric_azure_sql_table.png)
+
+![Number of rows in first metric table](images/endpoints/first_metric/count_first_metric_azure_sql_table.png)
+
+* And also for the second metric.
+
+![Second metric table](images/endpoints/second_metric/second_metric_azure_sql_table.png)
+
+![Number of rows in second metric table](images/endpoints/second_metric/count_second_metric_azure_sql_table.png)
