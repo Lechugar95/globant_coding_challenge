@@ -26,7 +26,7 @@ Setup:
 
 * Search Storage accounts on Azure Portal and enter your storage account.
 
-![Storage account:](/images/csv_upload/1_storage_account.jpg)
+[Storage accoun](images/csv_upload/1_storage_account.jpg)
 
 * Then go to Storage browser menu.
 
