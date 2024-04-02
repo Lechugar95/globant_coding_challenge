@@ -8,6 +8,7 @@ Features:
 * Returns the CSV data structure as JSON (headers and rows).
 * Inserts the data into Azure SQL tables.
 * Compute two metrics by using the inserted data.
+* Inserts the metrics data in its corresponding Azure SQL table.
 
 Requirements:
 
@@ -16,6 +17,8 @@ Requirements:
 * Azure Storage SDK for Python (azure-storage-blob)
 * Pyodbc
 * Uvicorn
+* Pandas
+* SQLAlchemy
 
 Setup:
 
@@ -79,11 +82,12 @@ git
 
 4. Install required libraries in your virtual environment:
 
-    pip install fastapi azure-storage-blob uvicorn pyodbc
+    pip install fastapi azure-storage-blob uvicorn pyodbc pandas sqlalchemy
 
 5. Replace placeholders in main.py:
 
-* YOUR_AZURE_SQL_DATABASE_CONNECTION_STRING: Your Azure SQL Database connection string.
+* YOUR_AZURE_SQL_DATABASE_CONNECTION_STRING_FOR_PYODBC: Your Azure SQL Database connection string  to use with the pyodbc library.
+* YOUR_AZURE_SQL_DATABASE_CONNECTION_STRING_FOR_SQLALCHEMY: Your Azure SQL Database connection string to use with the sqlalchemy library.
 * YOUR_AZURE_STORAGE_CONNECTION_STRING: Your Azure Storage connection string.
 * YOUR_CONTAINER_NAME: The name of the container containing your CSV files.
 
