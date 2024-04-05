@@ -19,12 +19,17 @@ https://fastapi-webapp-southcentralus.azurewebsites.net/docs
 Or you can use the direct link to test the endpoints.
 
 The following links are to read the data of the CSV files and to insert that data into the corresponding Azure SQL tables.
+
 https://fastapi-webapp-southcentralus.azurewebsites.net/csv/departments.csv
+
 https://fastapi-webapp-southcentralus.azurewebsites.net/csv/jobs.csv
+
 https://fastapi-webapp-southcentralus.azurewebsites.net/csv/hired_employees.csv
 
 And the following link are to compute the metrics and to insert the metric data into their corresponding Azure SQL tables.
+
 https://fastapi-webapp-southcentralus.azurewebsites.net/hired_by_quarter
+
 https://fastapi-webapp-southcentralus.azurewebsites.net/most_hired_in_2021
 
 # Local REST API
