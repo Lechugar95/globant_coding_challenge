@@ -47,3 +47,7 @@ def insert_metric_data(result_api, table_name, dtype_cols):
     return {"message": "Metric data inserted successfully into the corresponding Azure SQL table!"}
   except Exception as e:
     return {"error": str(e)}  # Return an error message if any exception occurs
+  
+
+def clean_table():
+  """Cleans the """

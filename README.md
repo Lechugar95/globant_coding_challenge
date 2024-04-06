@@ -12,7 +12,7 @@ Features:
 
 # Hosted REST API in Azure
 
-The REST API was hosted using service App Service of Azure. To test the hosted API, just use the following link and try the endpoints.
+The REST API was hosted using service App Services of Azure. To test the hosted API, just use the following link and try the endpoints.
 
 https://fastapi-webapp-southcentralus.azurewebsites.net/docs
 
