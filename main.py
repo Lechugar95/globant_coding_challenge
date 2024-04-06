@@ -2,11 +2,12 @@
 from fastapi import FastAPI, Query  # for creating a FastAPI web server
 from azure.storage.blob import BlobServiceClient  # for interacting with Azure Blob Storage
 from sqlalchemy.types import String, Integer
-from database.queries import insert_data, compute_metric, insert_metric_data
+from database.queries import insert_data, compute_metric, insert_metric_data, clean_table
 from storage.blob_client import storage_connection_string, container_name
 from utils.helpers import determine_table_name
 
 app = FastAPI()
+
 
 # API endpoint to retrieve CSV data and insert into SQL
 @app.get("/csv/{filename}")
@@ -73,6 +74,21 @@ async def calculate_second_metric():
    except Exception as e:
         # Handle errors appropriately (e.g., return HTTP status code 404)
         return {"error": str(e)}
+   
+@app.get("/clean_table")
+async def truncate_table(table_name: str):
+    """Cleans the data of the specified table in the Azure SQL database."""
+
+    query = f"TRUNCATE TABLE {table_name}"
+    print(query)
+    try:
+        truncate_response = clean_table(query, table_name)
+
+        return truncate_response
+    except Exception as e:
+        # Handle errors appropriately (e.g., return HTTP status code 400)
+        return {"error": str(e)}
+
 
 # Run the FastAPI server
 if __name__ == "__main__":
