@@ -33,6 +33,7 @@ def compute_metric(query):
       metric_results = [dict(zip([col[0] for col in cursor.description], row)) for row in results]
 
       return {"message": "Metric computed successfully!", "data": metric_results}
+      #return {"message": "Metric computed successfully!"}
    
    except Exception as e:
       
@@ -51,7 +52,7 @@ def insert_metric_data(result_api, table_name, dtype_cols):
     return {"error": str(e)}  # Return an error message if any exception occurs
   
 
-def clean_table(query, table_name):
+def truncate_table(query, table_name):
   """Cleans the date of the specific table"""
   
   try:
