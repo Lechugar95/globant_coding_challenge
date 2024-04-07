@@ -11,6 +11,7 @@ def client():
     with TestClient(app) as c:
         yield c
 
+
 @pytest.mark.parametrize("filename", ["departments.csv","jobs.csv","hired_employees.csv"])
 #@pytest.mark.parametrize("filename", ["departments.csv"])
 def test_get_csv_data(client, filename):
@@ -22,7 +23,7 @@ def test_get_csv_data(client, filename):
     assert "message" in response.json()  # Check for success message
     message = (response.json()["message"])
     print(f"Success message: {message}")
-    
+
 
 def test_calculate_first_metric(client):
     """Tests the /hired_by_quarter endpoint for calculating the first metric."""
@@ -30,8 +31,10 @@ def test_calculate_first_metric(client):
     assert response.status_code == 200  # Expect success status code
     assert "data" in response.json()[0] # Check for data in response
     assert "message" in response.json()[1]  # Check for success message (optional)
-    #message = (response.json()["message"])
-    #print(f"Success message: {message}")
+    data_message = (response.json()[0])
+    print(f"Success message: {data_message}")
+    message = (response.json()[1])
+    print(f"Success message: {message}")
 
 
 def test_calculate_second_metric(client):
@@ -40,8 +43,10 @@ def test_calculate_second_metric(client):
     assert response.status_code == 200  # Expect success status code
     assert "data" in response.json()[0] # Check for data in response
     assert "message" in response.json()[1]  # Check for success message (optional)
-    #message = (response.json()["message"])
-    #print(f"Success message: {message}")
+    data_message = (response.json()[0])
+    print(f"Success message: {data_message}")
+    message = (response.json()[1])
+    print(f"Success message: {message}")
 
 
 @pytest.mark.parametrize("table_name", ["departments","jobs","hired_employees","metric1","metric2"])
