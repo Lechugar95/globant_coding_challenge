@@ -1,12 +1,13 @@
 # Import necessary libraries
-from fastapi import FastAPI, Query  # for creating a FastAPI web server
+from fastapi import FastAPI  # for creating a FastAPI web server
 from azure.storage.blob import BlobServiceClient  # for interacting with Azure Blob Storage
 from sqlalchemy.types import String, Integer
-from database.queries import insert_data, compute_metric, insert_metric_data
+from database.queries import insert_data, compute_metric, insert_metric_data, truncate_table
 from storage.blob_client import storage_connection_string, container_name
 from utils.helpers import determine_table_name
 
 app = FastAPI()
+
 
 # API endpoint to retrieve CSV data and insert into SQL
 @app.get("/csv/{filename}")
@@ -26,11 +27,7 @@ async def get_csv_data(filename: str):
         
         # Read the CSV data from the download stream
         csv_data = download_stream.content_as_text(encoding="utf-8").splitlines()
-        #print("CSV DATA")
-        #print(csv_data)
         data = [row.split(",") for row in csv_data[0:]]
-        #print("DATA")
-        #print(data)
 
         # Determine table name and headers
         table_name, headers = determine_table_name(filename)
@@ -50,8 +47,6 @@ async def calculate_first_metric():
 
    try:
       data_response = compute_metric(query)
-      #print("RESPONSE")
-      #print(data_response)
       
       insert_response = insert_metric_data(result_api=data_response,table_name='metric1', dtype_cols={"department": String(), "job": String(), "Q1": Integer(),"Q2": Integer(),"Q3": Integer(),"Q4": Integer()})
 
@@ -73,6 +68,20 @@ async def calculate_second_metric():
    except Exception as e:
         # Handle errors appropriately (e.g., return HTTP status code 404)
         return {"error": str(e)}
+   
+@app.get("/truncate_table")
+async def deleting_records(table_name: str):
+    """Cleans the data of the specified table in the Azure SQL database."""
+
+    query = f"TRUNCATE TABLE {table_name}"
+    try:
+        truncate_response = truncate_table(query, table_name)
+
+        return truncate_response
+    except Exception as e:
+        # Handle errors appropriately (e.g., return HTTP status code 400)
+        return {"error": str(e)}
+
 
 # Run the FastAPI server
 if __name__ == "__main__":
