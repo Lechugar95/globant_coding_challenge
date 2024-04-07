@@ -6,9 +6,8 @@ from database.queries import insert_data, compute_metric, insert_metric_data, tr
 from storage.blob_client import storage_connection_string, container_name
 from utils.helpers import determine_table_name
 
-
-
 app = FastAPI()
+
 
 # API endpoint to retrieve CSV data and insert into SQL
 @app.get("/csv/{filename}")
