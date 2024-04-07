@@ -1,12 +1,13 @@
-# Connection strings for Azure resources. Replace them with your connection strings
-# For the blob storage
-#storage_connection_string = "YOUR_AZURE_STORAGE_CONNECTION_STRING"
+from azure.storage.blob import BlobServiceClient
+from config import storage_connection_string, container_name
 
-# Uncomment and try with the following connection string. Don't forget to comment the line above of connection string.
-storage_connection_string = "DefaultEndpointsProtocol=https;AccountName=inputapifiles;AccountKey=2hpa2I2Ks9j6yBQDdxeTAHtOJDpyqEQxzBvf7GBbwCbE9ZDu8w6vmTffCRiq8lVwlaWk4HQSP5Vt+AStNZ26Nw==;EndpointSuffix=core.windows.net"
+def get_blob_client():
+    """Creates a BlobServiceClient for interacting with Azure Blob Storage."""
 
-# Container name where your CSV files are stored
-#container_name = "YOUR_CONTAINER_NAME"
+    # Create BlobServiceClient and get the container client
+    blob_service_client = BlobServiceClient.from_connection_string(storage_connection_string)
 
-# Uncomment and try with the following container name. Don't forget to comment the line above of container name.
-container_name = "apifiles/dbmigration"
+    # Get a reference to the container
+    container_client = blob_service_client.get_container_client(container_name)
+    
+    return container_client
