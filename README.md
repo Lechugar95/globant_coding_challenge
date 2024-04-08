@@ -77,7 +77,7 @@ Setup:
 
 * Go to Add container option.
 
-![Adding container](images/csv_upload/4_add_container.jpg)
+![Adding the container](images/csv_upload/4_add_container.jpg)
 
 * Open your container and click on Add directory option.
 
