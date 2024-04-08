@@ -146,13 +146,17 @@ After creating the Dockerfile, we are going to execute the next commands on CMD 
 
 First we need to logout
 
+```bash
 docker logout
+```
 
 ![Logging out docker](images/hosted_api/docker_container/1_loggingout_docker.jpg)
 
 Then we Login to docker and write your username and password. It is the same username and password of your Docker account.
 
+```bash
 docker login
+```
 
 ![Logging in docker](images/hosted_api/docker_container/2_loginin_docker.jpg)
 
@@ -162,17 +166,23 @@ docker login
 
 Next go inside your project folder
 
+```bash
 cd path_project
+```
 
 We build the docker image
 
+```bash
 docker build -t image_name .
+```
 
 ![Building the docker image](images/hosted_api/docker_container/5_docker_image_built.jpg)
 
 Validate the image was built
 
+```bash
 docker images
+```
 
 ![Validating](images/hosted_api/docker_container/6_docker_images.jpg)
 
@@ -182,11 +192,15 @@ The docker images also appear on the Docker desktop app.
 
 Then tag your image created and specify a name for the target image. It is important to specify the username on this command.
 
+```bash
 docker tag name_source_image:tag username/name_target_image:tag
+```
 
 For example the command can be:
 
+```bash
 docker tag rest_api_lechu:latest lechuc/coding_challenge:latest
+```
 
 ![Tagging the image](images/hosted_api/docker_container/8_tagging_docker_image.jpg)
 
@@ -196,7 +210,9 @@ When tagging an image, creates the new image tagged and we can also validate it 
 
 And finally push your tagged image to Docker Hub
 
+```bash
 docker push lechuc/coding_challenge:latest
+```
 
 ![Pushing the image to Docker Hub](images/hosted_api/docker_container/10_pushing_image.jpg)
 
