@@ -17,7 +17,6 @@ def client():
 def test_get_csv_data(client, filename):
     """Tests the /csv/{filename} endpoint to retrieve CSV data and insert it into SQL."""
     # Replace with a valid filename in your container
-    #filename = "departments.csv"
     response = client.get(f"/csv/{filename}")
     assert response.status_code == 200  # Expect success status code
     assert "message" in response.json()  # Check for success message
