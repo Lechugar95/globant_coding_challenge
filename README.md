@@ -12,6 +12,233 @@ Features:
 
 # Hosted REST API in Azure
 
+## Step to step to deploy the API by using a local folder
+
+First you need to have an Azure subscription, for example, a trial Azure Subscription. Then enter to the [Azure Portal](https://portal.azure.com/) and search for App Services.
+
+![App Services](images/hosted_api/local_folder/1_app_services.jpg)
+
+The use the Create option and select Web App.
+
+![Create option](images/hosted_api/local_folder/2_create_option.jpg)
+
+Next we complete the basic information fields, for example, select an existing resource group o choose to create a new one, choose a name for the app service. In this case we use the Code option to publish the API and the runtime stack. Also we select a region and a pricing plan.
+
+![Basic information](images/hosted_api/local_folder/3_basic_fields.jpg)
+
+Next we go to Monitoring tab and enable the application insights that will alow to see the logs.
+
+![Monitoring option](images/hosted_api/local_folder/4_monitoring_fields.jpg)
+
+Finally, we go to Review + Create tab, wait some seconds and click on Create option.
+
+![Review and create](images/hosted_api/local_folder/5_review_create.jpg)
+
+Then we wait for the app service to be deployed.
+
+![App Service deployed](images/hosted_api/local_folder/7_app_service_deployed.jpg)
+
+A possible issue that may appear can be that the region selected can have a quota of 0 instances. This can be solved by changing the region on the Basics tab.
+
+![Possible issue](images/hosted_api/local_folder/6_possible_subscription_issue.jpg)
+
+Now we open Visual Studio Code and install the Azure App Service extension. This will help us later to see app deploying. We can use this extension to create the app service.
+
+![Azure App Service VSCode extension](images/hosted_api/local_folder/8_vscode_azure_app_service_extension.jpg)
+
+Then we go to the Azure left panel option and select to sign in Azure.
+
+![Sign in Azure account](images/hosted_api/local_folder/9_vscode_signin_azure_account.jpg)
+
+After we signed in with our Azure account we will see the name of our subscription.
+
+![Azure subscription](images/hosted_api/local_folder/10_vscode_azure_subscription.jpg)
+
+Next on App Services is going to appear all the app services deployed. We right click on the app service deployed steps before and select Deploy to Web App.
+
+![Deploy to Webb App option](images/hosted_api/local_folder/11_vscode_deploy_app1.jpg)
+
+Then we browser the local folder of our coding project we want to deploy.
+
+![Selecting local folder](images/hosted_api/local_folder/12_vscode_deploy_app2.jpg)
+
+When this pop up window appear we choose Deploy to deploy the app on the app service we create before. 
+
+![Pop up window](images/hosted_api/local_folder/13_vscode_deploy_app3.jpg)
+
+Now we wait until the app is deployed.
+
+![App deploying](images/hosted_api/local_folder/14_vscode_deploy_app4.jpg)
+
+![App deployed](images/hosted_api/local_folder/15_vscode_deployed_app.jpg)
+
+An additional configuration that can be made is to add a startup command. Then we go to the app service deployed in Azure and search the Configuration option.
+
+![App service configuration](images/hosted_api/local_folder/16_app_service_configuration.jpg)
+
+We write a startup command in case we need one and click on Save.
+
+![Startup command](images/hosted_api/local_folder/17_app_service_startup_command.jpg)
+
+
+## Step to step to deploy the API by using a GitHub Repository
+
+We go to [Azure Portal](https://portal.azure.com/) and search for App Services.
+
+![App Services](images/hosted_api/github_repository/1_app_services.jpg)
+
+Then use the Create option and select Web App.
+
+![Create option](images/hosted_api/github_repository/2_create_option.jpg)
+
+Next we complete the basics fields that are the same as we completed before for the previous app service.
+
+![Basic fields](images/hosted_api/github_repository/3_basic_fields.jpg)
+
+After that we go to Deployment tab and select our GitHub account. Also, we select the repository and branch to use.
+
+![Deployment fields](images/hosted_api/github_repository/4_deployment_fields.jpg)
+
+Next we go to Monitoring tab and enable the application insights to activate the log stream.
+
+![Monitoring fields](images/hosted_api/github_repository/5_monitoring_fields.jpg)
+
+Finally, we go to Review + Create tab, wait some seconds and click on Create option.
+
+![Review and create](images/hosted_api/github_repository/6_review_create.jpg)
+
+And wait for the app service to be deployed.
+
+![App service deployed](images/hosted_api/github_repository/7_app_service_deployed.jpg)
+
+We can also add a startup command by going to Configuration.
+
+![App service deployed](images/hosted_api/github_repository/8_app_service_configuration.jpg)
+
+Then adding the command and click on Save.
+
+![App service deployed](images/hosted_api/github_repository/9_app_service_startup_command.jpg)
+
+After that we can use the web app deployed.
+
+![Web app page](images/hosted_api/github_repository/10_app_service_fastapi.jpg)
+
+When a GitHub repository is used to deploy the web app. On the branch we select, is going to create the following directories.
+
+![GitHub workflow folder](images/hosted_api/github_repository/11_github_workflows_folder.jpg)
+
+Inside the workflow subdirectory is a .yml file.
+
+![GitHub workflow file](images/hosted_api/github_repository/12_github_workflows_file.jpg)
+
+Everytime we made changes on this branch, is going to run a workflow to redeploy the changes on the Azure web app. We can see the workflows on the Actions tab of the repository.
+
+![GitHub actions](images/hosted_api/github_repository/13_github_actions_workflows.jpg)
+
+
+## Step to step to deploy the API by using a Docker container
+
+Before we create the app service using a Docker container. We need a Dockerfile and then to follow some commands to build the docker image and to push that image to Docker Hub.
+
+In this repository there is a Dockerfile from which you can guide yourself to write your own.
+
+After creating the Dockerfile, we are going to execute the next commands on CMD console or in a CMD terminal on Visual Studio Code.
+
+First we need to logout
+
+docker logout
+
+![Logging out docker](images/hosted_api/docker_container/1_loggingout_docker.jpg)
+
+Then we Login to docker and write your username and password. It is the same username and password of your Docker account.
+
+docker login
+
+![Logging in docker](images/hosted_api/docker_container/2_loginin_docker.jpg)
+
+![Logging in docker](images/hosted_api/docker_container/3_loginin_docker_password.jpg)
+
+![Logging in docker](images/hosted_api/docker_container/4_loginin_docker_succeed.jpg)
+
+Next go inside your project folder
+
+cd path_project
+
+We build the docker image
+
+docker build -t image_name .
+
+![Building the docker image](images/hosted_api/docker_container/5_docker_image_built.jpg)
+
+Validate the image was built
+
+docker images
+
+![Validating](images/hosted_api/docker_container/6_docker_images.jpg)
+
+The docker images also appear on the Docker desktop app.
+
+![Docker images on desktop app](images/hosted_api/docker_container/7_docker_images_app.jpg)
+
+Then tag your image created and specify a name for the target image. It is important to specify the username on this command.
+
+docker tag name_source_image:tag username/name_target_image:tag
+
+For example the command can be:
+
+docker tag rest_api_lechu:latest lechuc/coding_challenge:latest
+
+![Tagging the image](images/hosted_api/docker_container/8_tagging_docker_image.jpg)
+
+When tagging an image, creates the new image tagged and we can also validate it on the Docker desktop app.
+
+![Docker tagged image on app](images/hosted_api/docker_container/9_tagging_docker_image_app.jpg)
+
+And finally push your tagged image to Docker Hub
+
+docker push lechuc/coding_challenge:latest
+
+![Pushing the image to Docker Hub](images/hosted_api/docker_container/10_pushing_image.jpg)
+
+The docker image pushed to Docker Hub also appear on the desktop app.
+
+![Pushed image on desktop app](images/hosted_api/docker_container/11_pushing_image_app.jpg)
+
+And on the Docker Hub web page.
+
+![Docker Hub repository](images/hosted_api/docker_container/12_docker_hub_repository.jpg)
+
+Now we create the app service on Azure. Go [Azure Portal](https://portal.azure.com/) and search for App Services.
+
+![App Services](images/hosted_api/docker_container/13_app_services.jpg)
+
+Then use the Create option and select Web App.
+
+![Create option](images/hosted_api/docker_container/14_create_option.jpg)
+
+Next we complete the basics fields. In this case we choose the Container option to publish and the operating system of this container.
+
+![Basic fields](images/hosted_api/docker_container/15_basic_fields.jpg)
+
+Then go to Container tab, select the Docker Hub option, choose Public on Access Type, because the container is public. Write the name of the image and his tag.
+
+![Container tab](images/hosted_api/docker_container/16_container_tab.jpg)
+
+On the Monitoring tab, enable the application insights to activate the log stream.
+
+![Monitoring fields](images/hosted_api/docker_container/17_monitoring_fields.jpg)
+
+And then wait for the web app to be deployed.
+
+![Deploying the web app](images/hosted_api/docker_container/18_deploying_app_service.jpg)
+
+After that the web app is ready to use it.
+
+![FastAPI web app](images/hosted_api/docker_container/19_fastapi_web_app.jpg)
+
+
+## Using the hosted API
+
 The REST API was hosted using service App Services of Azure. To test the hosted API, just use the following link and try the endpoints.
 
 https://fastapi-github-brazilsouth.azurewebsites.net/docs
