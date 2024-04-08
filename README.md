@@ -253,39 +253,74 @@ After that the web app is ready to use it.
 ![FastAPI web app](images/hosted_api/docker_container/19_fastapi_web_app.jpg)
 
 
-## Using the hosted API
+## Using the hosted API linked to a GitHub repository 
 
-The REST API was hosted using service App Services of Azure and the main branch of the GitHub repository. To test it, just use the following link and try the endpoints.
+This REST API was hosted using service App Services of Azure and the main branch of the GitHub repository. To test it, just use the following link and try the endpoints.
 
-https://fastapi-github-brazilsouth.azurewebsites.net/docs
+https://restapi-webapp-github.azurewebsites.net/docs
 
 Or you can use the direct link to test the endpoints.
 
 The following links are to read the data of the CSV files and to insert that data into the corresponding Azure SQL tables.
 
-https://fastapi-github-brazilsouth.azurewebsites.net/csv/departments.csv
+https://restapi-webapp-github.azurewebsites.net/csv/departments.csv
 
-https://fastapi-github-brazilsouth.azurewebsites.net/csv/jobs.csv
+https://restapi-webapp-github.azurewebsites.net/csv/jobs.csv
 
-https://fastapi-github-brazilsouth.azurewebsites.net/csv/hired_employees.csv
+https://restapi-webapp-github.azurewebsites.net/csv/hired_employees.csv
 
 And the following link are to compute the metrics and to insert the metric data into their corresponding Azure SQL tables.
 
-https://fastapi-github-brazilsouth.azurewebsites.net/hired_by_quarter
+https://restapi-webapp-github.azurewebsites.net/hired_by_quarter
 
-https://fastapi-github-brazilsouth.azurewebsites.net/most_hired_in_2021
+https://restapi-webapp-github.azurewebsites.net/most_hired_in_2021
 
 Also there is a feature to clean the table before inserting the data of each CSV file and to clean the data of the metrics table using the following links.
 
-https://fastapi-github-brazilsouth.azurewebsites.net/clean_table/jobs
+https://restapi-webapp-github.azurewebsites.net/clean_table/jobs
 
-https://fastapi-github-brazilsouth.azurewebsites.net/clean_table/departments
+https://restapi-webapp-github.azurewebsites.net/clean_table/departments
 
-https://fastapi-github-brazilsouth.azurewebsites.net/clean_table/hired_employees
+https://restapi-webapp-github.azurewebsites.net/clean_table/hired_employees
 
-https://fastapi-github-brazilsouth.azurewebsites.net/clean_table/metric1
+https://restapi-webapp-github.azurewebsites.net/clean_table/metric1
 
-https://fastapi-github-brazilsouth.azurewebsites.net/clean_table/metric1
+https://restapi-webapp-github.azurewebsites.net/clean_table/metric1
+
+
+## Using the hosted API linked to a Docker container 
+
+The REST API was hosted using service App Services of Azure and a Docker container published in Docker Hub. To test it, just use the following link and try the endpoints.
+
+https://restapi-webapp-containerized.azurewebsites.net/docs
+
+Or you can use the direct link to test the endpoints.
+
+The following links are to read the data of the CSV files and to insert that data into the corresponding Azure SQL tables.
+
+https://restapi-webapp-containerized.azurewebsites.net/csv/departments.csv
+
+https://restapi-webapp-containerized.azurewebsites.net/csv/jobs.csv
+
+https://restapi-webapp-containerized.azurewebsites.net/csv/hired_employees.csv
+
+And the following link are to compute the metrics and to insert the metric data into their corresponding Azure SQL tables.
+
+https://restapi-webapp-containerized.azurewebsites.net/hired_by_quarter
+
+https://restapi-webapp-containerized.azurewebsites.net/most_hired_in_2021
+
+Also there is a feature to clean the table before inserting the data of each CSV file and to clean the data of the metrics table using the following links.
+
+https://restapi-webapp-containerized.azurewebsites.net/clean_table/jobs
+
+https://restapi-webapp-containerized.azurewebsites.net/clean_table/departments
+
+https://restapi-webapp-containerized.azurewebsites.net/clean_table/hired_employees
+
+https://restapi-webapp-containerized.azurewebsites.net/clean_table/metric1
+
+https://restapi-webapp-containerized.azurewebsites.net/clean_table/metric1
 
 
 # Local REST API
