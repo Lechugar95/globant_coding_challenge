@@ -255,7 +255,7 @@ After that the web app is ready to use it.
 
 ## Using the hosted API
 
-The REST API was hosted using service App Services of Azure. To test the hosted API, just use the following link and try the endpoints.
+The REST API was hosted using service App Services of Azure and the main branch of the GitHub repository. To test it, just use the following link and try the endpoints.
 
 https://fastapi-github-brazilsouth.azurewebsites.net/docs
 
@@ -445,3 +445,21 @@ Testing the API:
 ![Second metric table](images/endpoints/second_metric/second_metric_azure_sql_table.PNG)
 
 ![Number of rows in second metric table](images/endpoints/second_metric/count_second_metric_azure_sql_table.PNG)
+
+# Testing
+
+To execute the automated tests use the following command.
+
+```python
+pytest -r tests
+```
+
+![All tests passed](images/tests/1_all_tests.jpg)
+
+If you want to execute an specified test use the command
+
+```python
+pytest -r tests/test_api_endpoints.py::test_get_csv_data
+```
+
+![Specified test](images/tests/2_specified_test.jpg)

@@ -12,7 +12,7 @@ app = FastAPI()
 # API endpoint to retrieve CSV data and insert into SQL
 @app.get("/csv/{filename}")
 async def get_csv_data(filename: str):
-    """Retrieves CSV data from Azure Blob Storage and inserts it into Azure SQL Database."""
+    """Retrieves CSV data from Azure Blob Storage and inserts it into Azure SQL Database. Try with the jobs.csv, departments.csv and hired_employees.csv files"""
 
     try:
         # Download the CSV blob
@@ -37,7 +37,7 @@ async def get_csv_data(filename: str):
 
 @app.get("/hired_by_quarter")
 async def calculate_first_metric():
-   """Shows the number of employees hired for each job and department in 2021 divided by quarter."""
+   """Shows the number of employees hired for each job and department in 2021 divided by quarter. This metric needs the inserted data of the 3 previous CSV files."""
 
    query = "SELECT d.department, j.job, SUM(CASE WHEN MONTH(h.datetime) BETWEEN 1 AND 3 THEN 1 ELSE 0 END) AS Q1, SUM(CASE WHEN MONTH(h.datetime) BETWEEN 4 AND 6 THEN 1 ELSE 0 END) AS Q2, SUM(CASE WHEN MONTH(h.datetime) BETWEEN 7 AND 9 THEN 1 ELSE 0 END) AS Q3, SUM(CASE WHEN MONTH(h.datetime) BETWEEN 10 AND 12 THEN 1 ELSE 0 END) AS Q4 FROM hired_employees h INNER JOIN departments d ON d.id = h.department_id INNER JOIN jobs j ON j.id = h.job_id WHERE YEAR(h.datetime) = '2021' GROUP BY d.department, j.job ORDER BY d.department, j.job"
 
@@ -55,7 +55,7 @@ async def calculate_first_metric():
 
 @app.get("/most_hired_in_2021")
 async def calculate_second_metric():
-   """Shows which departments hired more employees than the mean of employees hired in 2021 of all departments."""
+   """Shows which departments hired more employees than the mean of employees hired in 2021 of all departments. This metric needs the inserted data of hired_employees and departments CSV files."""
 
    query = "WITH contratados_2021 AS (SELECT d.id,  d.department, COUNT(h.id) AS hired FROM hired_employees h INNER JOIN departments d ON d.id = h.department_id WHERE YEAR(h.datetime) = '2021' GROUP BY d.id, d.department) SELECT  d.id,  d.department, COUNT(h.id) AS hired FROM hired_employees h INNER JOIN departments d ON d.id = h.department_id GROUP BY d.id, d.department HAVING COUNT(h.id) > (SELECT AVG(hired) AS promedio FROM contratados_2021) ORDER BY hired DESC"
 
@@ -73,7 +73,7 @@ async def calculate_second_metric():
    
 @app.get("/truncate_table")
 async def deleting_records(table_name: str):
-    """Cleans the data of the specified table in the Azure SQL database."""
+    """Cleans the data of the specified table in the Azure SQL database. Try using jobs, departments, hired_employees, metric1 or metric2 name tables."""
 
     query = f"TRUNCATE TABLE {table_name}"
     try:
