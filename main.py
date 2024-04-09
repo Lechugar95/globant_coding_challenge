@@ -8,6 +8,20 @@ from database.connection import get_db_connection, get_sqlalchemy_db_connection
 
 app = FastAPI()
 
+# API endpoint to truncate the data on all tables
+@app.get("/truncate_table")
+async def deleting_records(table_name: str):
+    """First, truncate the data of each table in the Azure SQL database before using the following features. Try using jobs, departments, hired_employees, metric1 or metric2 name tables."""
+
+    query = f"TRUNCATE TABLE {table_name}"
+    try:
+        with get_db_connection() as db_connection:
+            truncate_response = truncate_table(query, table_name, db_connection)
+
+        return truncate_response
+    except Exception as e:
+        # Handle errors appropriately (e.g., return HTTP status code 400)
+        return {"error": str(e)}
 
 # API endpoint to retrieve CSV data and insert into SQL
 @app.get("/csv/{filename}")
@@ -35,6 +49,7 @@ async def get_csv_data(filename: str):
         # Handle errors appropriately (e.g., return HTTP status code 404)
         return {"error": str(e)}
 
+# API endpoints to compute the first metric
 @app.get("/hired_by_quarter")
 async def calculate_first_metric():
    """Shows the number of employees hired for each job and department in 2021 divided by quarter. This metric needs the inserted data of the 3 previous CSV files."""
@@ -53,6 +68,7 @@ async def calculate_first_metric():
         # Handle errors appropriately (e.g., return HTTP status code 404)
         return {"error": str(e)}
 
+# API endpoints to compute the second metric
 @app.get("/most_hired_in_2021")
 async def calculate_second_metric():
    """Shows which departments hired more employees than the mean of employees hired in 2021 of all departments. This metric needs the inserted data of hired_employees and departments CSV files."""
@@ -70,23 +86,8 @@ async def calculate_second_metric():
    except Exception as e:
         # Handle errors appropriately (e.g., return HTTP status code 404)
         return {"error": str(e)}
-   
-@app.get("/truncate_table")
-async def deleting_records(table_name: str):
-    """Cleans the data of the specified table in the Azure SQL database. Try using jobs, departments, hired_employees, metric1 or metric2 name tables."""
-
-    query = f"TRUNCATE TABLE {table_name}"
-    try:
-        with get_db_connection() as db_connection:
-            truncate_response = truncate_table(query, table_name, db_connection)
-
-        return truncate_response
-    except Exception as e:
-        # Handle errors appropriately (e.g., return HTTP status code 400)
-        return {"error": str(e)}
 
 # Run the FastAPI server
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-
