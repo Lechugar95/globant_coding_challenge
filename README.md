@@ -1,5 +1,5 @@
 # Coding challenge
-This project provides a local REST API and a hosted REST API in Azure. This API was built with FastAPI to access and read CSV files stored in Azure Blob Storage, inserta the data of those CSV files into Azure SQL tables and then compute two metrics.
+This project provides a local REST API and hosted REST APIs in Azure. This API was built with FastAPI to access and read CSV files stored in Azure Blob Storage, insert the data of those CSV files into Azure SQL tables and then compute two metrics. Also, this project provides some visualization of the table where the CSV data is inserted and the metrics.
 
 Features:
 
@@ -498,3 +498,11 @@ pytest -r tests/test_api_endpoints.py::test_get_csv_data
 ```
 
 ![Specified test](images/tests/2_specified_test.jpg)
+
+# Visualization
+
+For this part we used Power BI Desktop that can be downloaded [here](https://www.microsoft.com/en-us/download/details.aspx?id=58494).
+
+Then we connected Power BI to the Azure SQL to retrieve the data of each table (jobs, departments, hired_employees, metric1 and metric2). After we added some charts using the data imported and published the dashboard on a Power BI workspace. Also, we published to the web, so it can be accessed with the following link.
+
+https://app.powerbi.com/view?r=eyJrIjoiYjBiM2JjNzAtOTc2Yy00ZTdkLTllYTctY2RlMThkM2RjYmU1IiwidCI6ImI5OWQyYzkwLWZhYzYtNDlhZi05NTVhLTVhY2FiZDFhOGEyMCIsImMiOjR9
