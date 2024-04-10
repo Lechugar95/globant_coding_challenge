@@ -505,4 +505,4 @@ For this part we used Power BI Desktop that can be downloaded [here](https://www
 
 Then we connected Power BI to the Azure SQL to retrieve the data of each table (jobs, departments, hired_employees, metric1 and metric2). After we added some charts using the data imported and published the dashboard on a Power BI workspace. Also, we published to the web, so it can be accessed with the following link.
 
-https://app.powerbi.com/view?r=eyJrIjoiYjBiM2JjNzAtOTc2Yy00ZTdkLTllYTctY2RlMThkM2RjYmU1IiwidCI6ImI5OWQyYzkwLWZhYzYtNDlhZi05NTVhLTVhY2FiZDFhOGEyMCIsImMiOjR9
+https://app.powerbi.com/view?r=eyJrIjoiYjBiM2JjNzAtOTc2Yy00ZTdkLTllYTctY2RlMThkM2RjYmU1IiwidCI6ImI5OWQyYzkwLWZhYzYtNDlhZi05NTVhLTVhY2FiZDFhOGEyMCIsImMiOjR9&pageName=ReportSection
